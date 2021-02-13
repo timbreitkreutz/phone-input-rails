@@ -1,5 +1,5 @@
 {
-  "name": "phone-input",
+  "name": "phone_input",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

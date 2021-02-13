@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: person) do |form| %>
   <% if person.errors.any? %>
     <div id="error_explanation">
@@ -18,10 +20,57 @@
 
   <div class="field">
     <%= form.label :home_phone %>
-    <%= form.text_field :home_phone %>
+    <%= form.text_field :home_phone, data: { "phone-input" => "home-phone", "phone-input-normalized" => "squash" } %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+<script>
+import("/javascripts/phone_input_international.js").then(
+    function (pii) {
+        pii.attach("phone-input");
+
+        pii.onChange(function (event, id, element, valid, normalized) {
+            console.log("Q");
+            console.log(event);
+            console.log(id);
+            console.log(element);
+            console.log(valid);
+            console.log(normalized);
+        });
+    }
+);
+</script>
+<%# 
+
+
+<h2>Input</h2>
+
+<form id="phoneform">
+<label>Land Line</label>
+<input type="tel" data-telephone-input="landLine"></input>
+<br>
+<label>Work Number</label>
+<input type="tel" data-telephone-input="workNumber"></input>
+<br>
+<label>SMS Number</label>
+<input type="tel" data-phone-input="smsNumber"></input>
+<br>
+<label>SMS Number (normalized)</label>
+<input type="tel" data-phone-input="smsNumber" data-phone-input-normalized="squash"></input>
+</form>
+
+<h2>Callbacks</h2>
+
+Your land line is <span id="landLine"></span>.
+<br>
+Your work number is <span id="workNumber"></span>.
+<br>
+Your SMS number is <span id="smsNumber"></span>.
+
+<h2> Form Data</h2>
+
+<pre id="formdata"></pre> %>
+
