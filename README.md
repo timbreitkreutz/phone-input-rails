@@ -1,24 +1,8 @@
-# README
+This repo contains a rails project which serves as a host for developing a pure ES-6 browser javascript
+tool for international telephone input, validation, and normalization, with the following features:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* ES-6:  ES-6 modules are used by default.    Webpack version will be provided at a later date.
+* Jslint:  All JS code passes JSlint
+* No globals:  No use of the window, document, or other global object
+* Re-entrant:  The module can be included and used any number of times without
+  interfering or clobbering other instances.
