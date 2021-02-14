@@ -3,7 +3,7 @@
 */
 let onChange;
 
-import {toCamelCase} from "/javascripts/phone_input_utilities.js";
+import {toCamelCase} from "./phone_input_utilities.js";
 
 function attach(tag) {
     function validate(number) {
