@@ -28,9 +28,9 @@
 <script>
 import("/javascripts/phone_input_international.js").then(
     function (pii) {
-        pii.attach("telephone-input");
+        let handle = pii.attach("telephone-input", document)[0];
 
-        pii.onChange(function (event, id, element, valid, normalized) {
+        handle.onChange(function (event, id, element, valid, normalized) {
             console.log("PII Event starting");
             console.log(event);
             console.log(id);

@@ -19,18 +19,17 @@ import("/javascripts/phone_input_international.js").then(
             it("should receive correct change callback params", function () {
                 let fired = false;
 
-                pii.attach("phone-input");
+                let handle = pii.attach("phone-input", document)[0];
                 let input = document.getElementById("person_home_phone_input");
 
-                const callback = function (ev, id, el, vl, nl) {
+                const callback = function (ev, el, vl, nl) {
                     expect(vl).to.equal(true);
                     expect(ev.type).to.equal("change");
-                    expect(id).to.equal("home-phone2");
                     expect(el).to.equal(input);
                     expect(nl).to.equal("5552738535");
                     fired = true;
                 };
-                pii.onChange(callback);
+                handle.onChange(callback);
 
                 expect(fired).to.equal(false);
 
