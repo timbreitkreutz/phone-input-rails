@@ -3,7 +3,11 @@
 */
 
 function validateNumber(number) {
-    return /^\(?([0-9]{3})\)?[\-.\u0020]?([0-9]{3})[\-.\u0020]?([0-9]{4})$/.test(number);
+    if (typeof number !== "string") {
+        return false;
+    }
+    const parsed = window.libphonenumber.parsePhoneNumber(number, "US");
+    return parsed.isValid();
 }
 
 function normalizeNumber(number) {

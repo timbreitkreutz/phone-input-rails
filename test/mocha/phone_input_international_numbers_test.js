@@ -25,11 +25,11 @@ import("/javascripts/phone_input_international/numbers.js").then(
         });
         describe("validateNumber", function () {
             it("should succeed on normal US number", function () {
-                expect(pin.validateNumber("8001231234")).to.equal(true);
-                expect(pin.validateNumber(8001231234)).to.equal(true);
+                expect(pin.validateNumber("+18009371234")).to.equal(true);
+                expect(pin.validateNumber("8009371234")).to.equal(true);
             });
             it("should fail with wrong number of digits", function () {
-                expect(pin.validateNumber("1")).to.equal(false);
+                expect(pin.validateNumber("1333")).to.equal(false);
                 expect(pin.validateNumber("800123234")).to.equal(false);
                 expect(pin.validateNumber("800123111234")).to.equal(false);
             });

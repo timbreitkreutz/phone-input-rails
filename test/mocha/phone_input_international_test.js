@@ -27,7 +27,7 @@ import("/javascripts/phone_input_international.js").then(
                 const input = document.getElementById("input2");
 
                 const callback = function (ev, el, vl, nl) {
-                    expect(vl).to.equal(true);
+                    expect(vl).to.equal(false);
                     expect(ev.type).to.equal("change");
                     expect(el).to.equal(input);
                     expect(nl).to.equal("5552738535");
