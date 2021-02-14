@@ -1,6 +1,10 @@
 function toCamelCase(string) {
     "use strict";
-    return string.split("-").map(function (word, ii) {
+    let parts = string.split("-");
+    if (parts.length === 1) {
+        return string;
+    }
+    return parts.map(function (word, ii) {
         if (ii === 0) {
             return word.toLowerCase();
         }

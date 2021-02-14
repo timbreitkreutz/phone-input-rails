@@ -4,3 +4,17 @@
 
 <%= link_to 'Show', @person %> |
 <%= link_to 'Back', people_path %>
+
+<div id="mocha"></div>
+
+<script src="https://unpkg.com/chai/chai.js"></script>
+<script src="https://unpkg.com/mocha/mocha.js"></script>
+
+<script class="mocha-init">
+    mocha.setup('bdd');
+    mocha.growl();
+</script>
+<script src="/javascripts/test.js"></script>
+<script class="mocha-exec">
+    mocha.run();
+</script>
