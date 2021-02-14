@@ -4,16 +4,10 @@
 let onChange;
 
 import {toCamelCase} from "./phone_input_utilities.js";
+import {normalizeNumber, validateNumber}
+  from "./phone_input_international_numbers.js";
 
 function attach(tag) {
-    function validate(number) {
-        return /^\(?([0-9]{3})\)?[\-.\u0020]?([0-9]{3})[\-.\u0020]?([0-9]{4})$/.test(number);
-    }
-
-    function normalize(number) {
-        return number.replace(/[^\d]*/g, "");
-    }
-
     const camelCaseTag = toCamelCase(tag);
     let components = [];
 
@@ -24,8 +18,8 @@ function attach(tag) {
             element.addEventListener(
                 "change",
                 function (event) {
-                    const valid = validate(element.value);
-                    const normalized = normalize(element.value);
+                    const valid = validateNumber(element.value);
+                    const normalized = normalizeNumber(element.value);
                     listener(event, component.id, element, valid, normalized);
                 }
             );
@@ -44,7 +38,7 @@ function attach(tag) {
             element.addEventListener(
                 "change",
                 function () {
-                    element.value = normalize(element.value);
+                    element.value = normalizeNumber(element.value);
                 }
             );
         }
