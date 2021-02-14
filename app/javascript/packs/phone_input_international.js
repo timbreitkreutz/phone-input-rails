@@ -1,21 +1,20 @@
 /*jslint
  browser
 */
-import {toCamelCase} from "./phone_input_international/utilities.js";
 import {normalizeNumber, validateNumber}
     from "./phone_input_international/numbers.js";
 
-function attach(tag, scope = document) {
-    const camelCaseTag = toCamelCase(tag);
+function attach(tag, options = {}) {
+    const scope = options.scope || document;
     let handles = [];
 
     // Collect specified elements on the page for later use
     // Set up normalization events if specified
-    scope.querySelectorAll(`[data-${tag}]`).forEach(function (element) {
-        const id = element.dataset[camelCaseTag];
-        element.placeholder = `${id}/${tag}`;
+    scope.querySelectorAll(tag).forEach(function (element) {
+        element.placeholder = `(rrr) nnn-nnnn`;
 
         handles.push({
+            element,
             onChange: function (listener) {
                 element.addEventListener(
                     "change",
@@ -28,7 +27,7 @@ function attach(tag, scope = document) {
             }
         });
 
-        if (element.dataset[`${camelCaseTag}Normalized`] === "squash") {
+        if (options.normalizeOnChange === "squash") {
             element.addEventListener(
                 "change",
                 function () {

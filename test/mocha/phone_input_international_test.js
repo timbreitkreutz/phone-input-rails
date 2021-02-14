@@ -17,10 +17,14 @@ import("/javascripts/phone_input_international.js").then(
         });
         describe("onChange", function () {
             it("should receive correct change callback params", function () {
-                let fired = false;
+                const options = {
+                    scope: document,
+                    normalizeOnChange: "squash"
+                };
 
-                let handle = pii.attach("phone-input", document)[0];
-                let input = document.getElementById("person_home_phone_input");
+                let fired = false;
+                const handle = pii.attach("#input2", options)[0];
+                const input = document.getElementById("input2");
 
                 const callback = function (ev, el, vl, nl) {
                     expect(vl).to.equal(true);
