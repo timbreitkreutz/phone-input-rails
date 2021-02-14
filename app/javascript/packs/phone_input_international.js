@@ -8,23 +8,29 @@ import {normalizeNumber, validateNumber}
 
 // All components that got attached to this instance of the plugin
 let components = [];
+let tag;
 
 function onChange(listener) {
     components.forEach(function (component) {
-        const element = component.element;
+        if (!component.changeAttached) {
+            component.changeAttached = true;
 
-        element.addEventListener(
-            "change",
-            function (event) {
-                const valid = validateNumber(element.value);
-                const normalized = normalizeNumber(element.value);
-                listener(event, component.id, element, valid, normalized);
-            }
-        );
+            const element = component.element;
+
+            element.addEventListener(
+                "change",
+                function (event) {
+                    const valid = validateNumber(element.value);
+                    const normalized = normalizeNumber(element.value);
+                    listener(event, component.id, element, valid, normalized);
+                }
+            );
+        }
     });
 }
 
-function attach(tag) {
+function attach(toTag) {
+    tag = toTag;
     const camelCaseTag = toCamelCase(tag);
 
     // Collect specified elements on the page for later use
@@ -35,8 +41,10 @@ function attach(tag) {
 
         components.push({
             id,
-            element
+            element,
+            changeAttached: false
         });
+        window.components = components;
         if (element.dataset[`${camelCaseTag}Normalized`] === "squash") {
             element.addEventListener(
                 "change",

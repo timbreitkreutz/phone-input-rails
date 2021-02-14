@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :home_phone %>
-    <%= form.text_field :home_phone, data: { "phone-input" => "home-phone", "phone-input-normalized" => "squash" } %>
+    <%= form.text_field :home_phone, data: { "telephone-input" => "home-phone", "telephone-input-normalized" => "squash" } %>
   </div>
 
   <div class="actions">
@@ -28,7 +28,7 @@
 <script>
 import("/javascripts/phone_input_international.js").then(
     function (pii) {
-        pii.attach("phone-input");
+        pii.attach("telephone-input");
 
         pii.onChange(function (event, id, element, valid, normalized) {
             console.log("PII Event starting");
