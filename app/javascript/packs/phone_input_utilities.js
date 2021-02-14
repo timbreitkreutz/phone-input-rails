@@ -1,5 +1,8 @@
 function toCamelCase(string) {
     "use strict";
+    if (typeof string !== "string") {
+        return undefined;
+    }
     let parts = string.split("-");
     if (parts.length === 1) {
         return string;

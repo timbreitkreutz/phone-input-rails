@@ -6,6 +6,8 @@ import("/javascripts/phone_input_utilities.js").then(
             it("change strings to camelcase", function () {
                 expect(pu.toCamelCase("ab-cd")).to.equal("abCd");
                 expect(pu.toCamelCase("abCd")).to.equal("abCd");
+                expect(pu.toCamelCase("")).to.equal("");
+                expect(pu.toCamelCase(undefined)).to.equal(undefined);
             })
         });
     }
