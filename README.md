@@ -6,3 +6,4 @@ tool for international telephone input, validation, and normalization, with the 
 * No globals:  No use of the window, document, or other global object
 * Re-entrant:  The module can be included and used any number of times without
   interfering or clobbering other instances.
+

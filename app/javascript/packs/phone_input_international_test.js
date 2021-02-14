@@ -16,7 +16,7 @@ import("/javascripts/phone_input_international.js").then(
             });
         });
         describe("onChange", function () {
-            it("recieve correct information on a callback", function () {
+            it("should receive correct change callback params", function () {
                 let fired = false;
 
                 pii.attach("phone-input");
@@ -45,7 +45,7 @@ import("/javascripts/phone_input_international.js").then(
 import("/javascripts/phone_input_utilities.js").then(
     function (pu) {
         describe("camelCase", function () {
-            it("change strings to camelcase", function () {
+            it("should change strings to camelcase", function () {
                 expect(pu.toCamelCase("ab-cd")).to.equal("abCd");
                 expect(pu.toCamelCase("abCd")).to.equal("abCd");
                 expect(pu.toCamelCase("")).to.equal("");
@@ -76,16 +76,16 @@ import("/javascripts/phone_input_international_numbers.js").then(
             });
         });
         describe("validateNumber", function () {
-            it("succeed on normal US number", function () {
+            it("should succeed on normal US number", function () {
                 expect(pin.validateNumber("8001231234")).to.equal(true);
                 expect(pin.validateNumber(8001231234)).to.equal(true);
             });
-            it("fail with wrong number of digits", function () {
+            it("should fail with wrong number of digits", function () {
                 expect(pin.validateNumber("1")).to.equal(false);
                 expect(pin.validateNumber("800123234")).to.equal(false);
                 expect(pin.validateNumber("800123111234")).to.equal(false);
             });
-            it("fail with random garbage", function () {
+            it("should fail with random garbage", function () {
                 expect(pin.validateNumber(null)).to.equal(false);
                 expect(pin.validateNumber(12.3)).to.equal(false);
                 expect(pin.validateNumber([1, 3])).to.equal(false);
