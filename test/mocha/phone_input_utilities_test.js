@@ -6,7 +6,7 @@
    it
  */
 
-import("/javascripts/phone_input_utilities.js").then(
+import("/javascripts/phone_input_international/utilities.js").then(
     function (pu) {
         describe("camelCase", function () {
             it("should change strings to camelcase", function () {

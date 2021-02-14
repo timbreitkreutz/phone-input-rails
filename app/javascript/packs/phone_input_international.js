@@ -1,10 +1,9 @@
 /*jslint
  browser
 */
-import {toCamelCase}
-  from "./phone_input_utilities.js";
+import {toCamelCase} from "./phone_input_international/utilities.js";
 import {normalizeNumber, validateNumber}
-  from "./phone_input_international_numbers.js";
+    from "./phone_input_international/numbers.js";
 
 // All components that got attached to this instance of the plugin
 let components = [];

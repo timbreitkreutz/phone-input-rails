@@ -6,7 +6,7 @@
    it
  */
 
-import("/javascripts/phone_input_international_numbers.js").then(
+import("/javascripts/phone_input_international/numbers.js").then(
     function (pin) {
         describe("normalizeNumber", function () {
             it("should remove spaces", function () {

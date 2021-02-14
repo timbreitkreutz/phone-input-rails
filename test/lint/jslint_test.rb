@@ -1,7 +1,13 @@
 require "test_helper"
 
-class PersonTest < ActiveSupport::TestCase
-  test "the truth" do
-    system("jslint-lite app/javascript/packs/phone*.js")
+class JSLintTest < ActiveSupport::TestCase
+  test "all the filez" do
+    files = Dir.glob("./app/javascript/packs/phone*.js") +
+      Dir.glob("./app/javascript/packs/phone*/*.js") +
+      Dir.glob("./test/mocha/*.js")
+    files.sort.uniq.each do |file|
+      puts "File: #{file}"
+      system("jslint-lite #{file}")
+    end
   end
 end
