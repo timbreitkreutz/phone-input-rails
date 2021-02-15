@@ -5,15 +5,11 @@
 import Metadata from "/javascripts/libphonenumber-js/metadata";
 
 let metadata;
-let country;
+let numberingPlan;
 
 function lengthOK(number) {
-    // console.log("F");
-    // console.log(country);
-    let validLengths = country[3];
     let lengthFound = false;
-    // console.log(validLengths);
-    validLengths.forEach(function (length) {
+    numberingPlan.possibleLengths().forEach(function (length) {
         // console.log("G")
         // console.log(`checking ${length}`)
         if (length === number.length) {
@@ -24,12 +20,16 @@ function lengthOK(number) {
 }
 
 function patternMatch(number) {
-    let result = new RegExp(country[2]);
-    // console.log(result);
-    let r2 = result.test(number);
-    // console.log(r2);
-    // return new RegExp(metadata.countries["US"][2])).test(number);
-    return r2;
+    // console.log("HH")
+    let patternFound = false;
+    numberingPlan.formats().forEach(function (format) {
+        // console.log("II");
+        // console.log(`checking ${format.pattern()}`)
+        if (new RegExp(format.pattern()).test(number)) {
+            patternFound = true;
+        }
+    });
+    return (patternFound);
 }
 
 function validateNumber(number) {
@@ -65,9 +65,9 @@ if (typeof metadata !== "object") {
             // console.log("D");
             // console.log(data);
             metadata = new Metadata(data);
-            // console.log("E");
-            // console.log(metadata)
-            country = metadata.getCountryMetadata("US");
+            numberingPlan = metadata.selectNumberingPlan(1, "US");
+            // console.log("G");
+            // console.log(numberingPlan);
         }
     );
 }
