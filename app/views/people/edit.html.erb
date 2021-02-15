@@ -12,15 +12,13 @@
 
 <script src="https://unpkg.com/chai/chai.js"></script>
 <script src="https://unpkg.com/mocha/mocha.js"></script>
-<script src="https://unpkg.com/libphonenumber-js@1.9.11/bundle/libphonenumber-max.js"></script>
 
 <script class="mocha-init">
     mocha.setup('bdd');
     mocha.growl();
 </script>
-<script src="/mocha/phone_input_international_test.js"></script>
-<script src="/mocha/phone_input_international_numbers_test.js"></script>
-<script src="/mocha/phone_input_utilities_test.js"></script>
+<script src="/mocha/phone_input_international/numbers_test.js"></script>
+<script src="/mocha/phone_input_international/attach_test.js"></script>
 <script class="mocha-exec">
     mocha.run();
 </script>

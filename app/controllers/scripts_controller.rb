@@ -1,15 +1,23 @@
 class ScriptsController < ApplicationController
-  protect_from_forgery except: %i[library phone_input_international test]
+  protect_from_forgery except: %i[module test submodule subsubmodule metadata]
 
-  def library
-    render js: File.read("./app/javascript/packs/phone_input_international/#{params[:filename]}.#{params[:extension]}")
+  def module
+    render js: File.read("./app/javascript/modules/#{params[:module]}/#{params[:filename]}.js")
+  end
+
+  def submodule
+    render js: File.read("./app/javascript/modules/#{params[:module]}/#{params[:sub]}/#{params[:filename]}.js")
+  end
+
+  def subsubmodule
+    render js: File.read("./app/javascript/modules/#{params[:module]}/#{params[:sub]}/#{params[:sub2]}/#{params[:filename]}.js")
   end
 
   def test
-    render js: File.read("./test/mocha/#{params[:filename]}.#{params[:extension]}")
+    render js: File.read("./test/mocha/#{params[:module]}/#{params[:filename]}.#{params[:extension]}")
   end
 
-  def phone_input_international
-    render js: File.read("./app/javascript/packs/phone_input_international.js")
+  def metadata
+    render json: File.read("./app/javascript/modules/libphonenumber-js/metadata.min.json")
   end
 end

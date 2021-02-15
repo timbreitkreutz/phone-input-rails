@@ -6,6 +6,8 @@
    it
  */
 
+const expect = chai.expect;
+
 import("/javascripts/phone_input_international/numbers.js").then(
     function (pin) {
         describe("normalizeNumber", function () {

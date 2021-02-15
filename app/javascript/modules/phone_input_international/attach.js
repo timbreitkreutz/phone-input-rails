@@ -2,7 +2,7 @@
  browser
 */
 import {normalizeNumber, validateNumber}
-    from "./phone_input_international/numbers.js";
+    from "./numbers.js";
 
 function attach(tag, options = {}) {
     const scope = options.scope || document;

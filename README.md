@@ -7,3 +7,7 @@ tool for international telephone input, validation, and normalization, with the 
 * Re-entrant:  The module can be included and used any number of times without
   interfering or clobbering other instances.
 
+
+## Dependencies
+
+* Uses libphonenumber-js

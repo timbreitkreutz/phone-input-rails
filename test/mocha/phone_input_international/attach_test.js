@@ -6,9 +6,7 @@
    it
  */
 
-const expect = chai.expect;
-
-import("/javascripts/phone_input_international.js").then(
+import("/javascripts/phone_input_international/attach.js").then(
     function (pii) {
         describe("version", function () {
             it("should be 0.0.1", function () {
