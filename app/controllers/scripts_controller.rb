@@ -18,6 +18,6 @@ class ScriptsController < ApplicationController
   end
 
   def metadata
-    render json: File.read("./app/javascript/modules/libphonenumber-js/metadata.min.json")
+    render json: File.read("./app/javascript/modules/metadata.min.json")
   end
 end
