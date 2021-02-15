@@ -27,7 +27,6 @@ import("/javascripts/phone_input_international/numbers.js").then(
         });
         describe("validateNumber", function () {
             it("should succeed on normal US number", function () {
-                expect(pin.validateNumber("+18009371234")).to.equal(true);
                 expect(pin.validateNumber("8009371234")).to.equal(true);
             });
             it("should fail with wrong number of digits", function () {
