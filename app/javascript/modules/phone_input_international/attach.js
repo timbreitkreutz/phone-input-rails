@@ -1,7 +1,7 @@
 /*jslint
  browser
 */
-import {normalizeNumber, validateNumber}
+import {normalizeNumber, validateNumber, placeholder}
     from "./numbers.js";
 
 function attach(tag, options = {}) {
@@ -11,7 +11,7 @@ function attach(tag, options = {}) {
     // Collect specified elements on the page for later use
     // Set up normalization events if specified
     scope.querySelectorAll(tag).forEach(function (element) {
-        element.placeholder = `(rrr) nnn-nnnn`;
+        element.placeholder = placeholder();
 
         handles.push({
             element,

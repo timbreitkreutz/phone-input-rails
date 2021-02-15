@@ -43,6 +43,8 @@ import("/javascripts/phone_input_international/attach.js").then(
                 input.dispatchEvent(new Event("change"));
 
                 expect(fired).to.equal(true);
+
+                expect(input.placeholder).to.equal("(rrr) nnn-nnnn");
             });
         });
     }
