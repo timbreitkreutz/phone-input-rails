@@ -5,21 +5,32 @@ import {normalizeNumber, validateNumber}
     from "./numbers.js";
 
 function Handle(element) {
+    let handle;
+
     function onChange(listener) {
         element.addEventListener(
             "change",
             function (event) {
-                const valid = validateNumber(element.value);
-                const normalized = normalizeNumber(element.value);
-                listener(event, element, valid, normalized);
+                listener(event, handle);
             }
         );
     }
 
-    return {
-        element,
+    function isValid() {
+        return validateNumber(element.value);
+    }
+
+    function normalized() {
+        return normalizeNumber(element.value);
+    }
+
+    handle = {
+        isValid,
+        normalized,
         onChange
     };
+
+    return handle;
 }
 
 export {Handle};

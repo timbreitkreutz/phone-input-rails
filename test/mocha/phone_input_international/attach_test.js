@@ -24,16 +24,11 @@ import("/javascripts/phone_input_international/attach.js").then(
                 const handle = pii.attach("#input2", options)[0];
                 const input = document.getElementById("input2");
 
-                const callback = function (ev, el, vl, nl) {
-                    // console.log("1");
-                    // console.log(ev);
-                    // console.log(el);
-                    // console.log(vl);
-                    // console.log(nl);
-                    expect(vl).to.equal(true);
-                    expect(ev.type).to.equal("change");
-                    expect(el).to.equal(input);
-                    expect(nl).to.equal("5552738535");
+                const callback = function (event, handle) {
+                    expect(event.type).to.equal("change");
+
+                    expect(handle.isValid()).to.equal(true);
+                    expect(handle.normalized()).to.equal("5552738535");
                     fired = true;
                 };
                 handle.onChange(callback);
