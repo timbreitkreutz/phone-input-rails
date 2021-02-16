@@ -11,7 +11,7 @@ let thePlaceholder;
 function lengthOK(number) {
     let lengthFound = false;
     numberingPlan.possibleLengths().forEach(function (length) {
-        if (length === number.length) {
+        if (!lengthFound && length === number.length) {
             lengthFound = true;
         }
     });
@@ -21,7 +21,7 @@ function lengthOK(number) {
 function patternMatch(number) {
     let patternFound = false;
     numberingPlan.formats().forEach(function (format) {
-        if (new RegExp(format.pattern()).test(number)) {
+        if (!patternFound && new RegExp(format.pattern()).test(number)) {
             patternFound = true;
         }
     });
