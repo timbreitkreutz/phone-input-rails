@@ -4,7 +4,7 @@
 import {normalizeNumber, validateNumber}
     from "./numbers.js";
 
-function Handle(element) {
+function makeHandle(element) {
     let handle;
 
     function onChange(listener) {
@@ -24,7 +24,12 @@ function Handle(element) {
         return normalizeNumber(element.value);
     }
 
+    function countryCode() {
+        return "US";
+    }
+
     handle = {
+        countryCode,
         isValid,
         normalized,
         onChange
@@ -33,4 +38,4 @@ function Handle(element) {
     return handle;
 }
 
-export {Handle};
+export {makeHandle};

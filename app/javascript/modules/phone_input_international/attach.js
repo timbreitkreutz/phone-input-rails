@@ -1,8 +1,8 @@
 /*jslint
  browser
 */
-import {normalizeNumber, placeholder} from "./numbers.js";
-import {Handle} from "./handle.js";
+import {placeholder} from "./numbers.js";
+import {makeHandle} from "./handle.js";
 
 function attach(tag, options = {}) {
     const scope = options.scope || document;
@@ -12,14 +12,15 @@ function attach(tag, options = {}) {
     // Set up normalization events if specified
     scope.querySelectorAll(tag).forEach(function (element) {
         element.placeholder = placeholder();
+        const handle = makeHandle(element);
 
-        handles.push(new Handle(element));
+        handles.push(handle);
 
         if (options.normalizeOnChange === "squash") {
             element.addEventListener(
                 "change",
                 function () {
-                    element.value = normalizeNumber(element.value);
+                    element.value = handle.normalized();
                 }
             );
         }
