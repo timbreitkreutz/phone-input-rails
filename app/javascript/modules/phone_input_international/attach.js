@@ -3,6 +3,7 @@
 */
 import {placeholder} from "./numbers.js";
 import {makeHandle} from "./handle.js";
+import {attachCountryPicker} from "./countryPicker.js";
 
 function attach(tag, options = {}) {
     const scope = options.scope || document;
@@ -23,6 +24,10 @@ function attach(tag, options = {}) {
                     element.value = handle.normalized();
                 }
             );
+        }
+
+        if (options.countryPicker) {
+            attachCountryPicker(handle, options);
         }
     });
     return handles;

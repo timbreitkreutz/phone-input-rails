@@ -30,6 +30,7 @@ function makeHandle(element) {
 
     handle = {
         countryCode,
+        element,
         isValid,
         normalized,
         onChange
