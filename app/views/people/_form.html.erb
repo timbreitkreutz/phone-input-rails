@@ -32,7 +32,7 @@ import("/javascripts/phone_input_international/attach.js").then(
           normalizer: "squash",
           countryPicker: "my-country-picker",
           placeholder: true,
-          nativeCountryNames: true
+          countrySelectors: "emoji,code,native"
         }
         let handle = pii.attach("#person_home_phone", options)[0];
 

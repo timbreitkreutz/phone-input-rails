@@ -34,13 +34,16 @@ function countryPicker(handle, options) {
             selector += "selected='selected'";
         }
         selector += ">";
-        selector += countryData[code].emoji;
-        selector += " - ";
-        if (options.nativeCountryNames) {
-            selector += countryData[code].native;
-        } else {
-            selector += countryData[code].name;
-        }
+        let description = [];
+        let strings = options.countrySelectors || "emoji,name";
+        strings.split(",").forEach(function (field) {
+            if (field !== "code") {
+                description.push(countryData[code][field]);
+            } else {
+                description.push(code);
+            }
+        });
+        selector += description.join(" &ndash; ");
         selector += "</option>";
     });
     selector += "</select>";
