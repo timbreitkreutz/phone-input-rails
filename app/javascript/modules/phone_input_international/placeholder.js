@@ -16,7 +16,6 @@ function placeholder(handle, options) {
         handle.element.placeholder = example(format.format());
         return true;
     });
-    handle.element.placeholder = placeholder(handle);
 }
 
 export {placeholder};

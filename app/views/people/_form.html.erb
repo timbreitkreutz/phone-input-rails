@@ -30,7 +30,8 @@ import("/javascripts/phone_input_international/attach.js").then(
     function (pii) {
         const options = {
           normalizer: "squash",
-          countryPicker: "my-country-picker"
+          countryPicker: "my-country-picker",
+          placeholder: true
         }
         let handle = pii.attach("#person_home_phone", options)[0];
 
