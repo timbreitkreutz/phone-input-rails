@@ -12,16 +12,10 @@ let countryData;
 let callbacks = [];
 
 function afterLoad(callback) {
-    console.log("AFTERLOAD")
     callbacks.push(callback);
 }
 
 function loadCompleted() {
-    console.log("LOAD COMPLETED")
-    console.log(phoneData);
-    console.log(typeof phoneData)
-    console.log(countryData);
-    console.log(typeof countryData)
     if (typeof phoneData === "object" && typeof countryData === "object") {
         callbacks.forEach(function (callback) {
             callback();
@@ -93,4 +87,11 @@ if (typeof countryData !== "object") {
     );
 }
 
-export {afterLoad, normalizeNumber, validateNumber, numberingPlan, countryData};
+export {
+    afterLoad,
+    countryData,
+    normalizeNumber,
+    numberingPlan,
+    phoneData,
+    validateNumber
+};
