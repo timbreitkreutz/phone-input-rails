@@ -11,7 +11,7 @@ describe('version', function () {
 
 describe('attach', function () {
     it('create a single handle', function () {
-        const input = document.getElementById("input2");
+    const input = document.getElementById("input2");
         let handles1 = attach("#input2", {});
         chai.expect(handles1.length).to.equal(1);
         let handles2 = attach("#input2", {});
