@@ -13,6 +13,8 @@ describe('countryPicker', function () {
             afterInitialize() {
                 const flag = input.parentNode.querySelector(".normalizer_test_input_flag");
                 chai.expect(flag.className).to.equal("normalizer_test_input_flag")
+                chai.expect(flag.childNodes[0].value).to.equal("AF");
+                chai.expect(flag.childNodes.length).to.equal(250);
             }
         }
         attach("#normalizer_test_input", options);
