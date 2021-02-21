@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get "metadata.min", to: "scripts#metadata"
+  get "countries.emoji.min", to: "scripts#country_list"
   get "javascripts/:module/:filename", to: "scripts#module"
   get "javascripts/:module/:sub/:filename", to: "scripts#submodule"
   get "javascripts/:module/:sub/:sub2/:filename", to: "scripts#subsubmodule"

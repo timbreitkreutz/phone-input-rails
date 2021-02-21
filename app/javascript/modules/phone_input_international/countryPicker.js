@@ -2,30 +2,33 @@
  browser
 */
 
-function attachCountryPicker(handle, options) {
+import {countryData} from "./data.js";
+
+function countryPicker(handle, options) {
+    if (!options.countryPicker) {
+        return;
+    }
     const input = handle.element;
     const parent = input.parentNode;
-
-    const flag = document.createElement("span");
 
     let className = "phone-input-international-country-picker";
     if (typeof options.countryPicker === "string") {
         className = options.countryPicker;
     }
+    const control = document.createElement("span");
+    control.className = className;
 
-    flag.className = className;
+    const flag = document.createElement("span");
 
-    const img = document.createElement("img");
-    const countryCode = handle.countryCode();
-    const src = `https://www.countryflagicons.com/FLAT/64/${countryCode}.png`;
-    img.src = src;
-    img.style = "width: 22px; vertical-align: bottom;";
-    img.title = countryCode;
-    flag.appendChild(img);
-    let arrow = document.createElement("span");
+    flag.innerHTML = countryData[handle.countryCode()].emoji;
+    flag.style = "font-size: 16px; vertical-align: bottom";
+    control.appendChild(flag);
+
+    const arrow = document.createElement("span");
     arrow.innerHTML = "▾";
-    flag.appendChild(arrow);
-    parent.insertBefore(flag, input);
+    control.appendChild(arrow);
+
+    parent.insertBefore(control, input);
 }
 
-export {attachCountryPicker};
+export {countryPicker};

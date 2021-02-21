@@ -14,12 +14,13 @@
 <script src="https://unpkg.com/mocha/mocha.js"></script>
 
 <script class="mocha-init">
+    console.log("MOCHA START")
     mocha.setup('bdd');
-    mocha.growl();
 </script>
-<script src="/mocha/phone_input_international/numbers_test.js"></script>
-<script src="/mocha/phone_input_international/handle_test.js"></script>
-<script src="/mocha/phone_input_international/attach_test.js"></script>
-<script class="mocha-exec">
+<%# <script src="/mocha/phone_input_international/data_test.js"></script> %>
+<%# <script src="/mocha/phone_input_international/handle_test.js"></script> %>
+<script type="module" src="/mocha/phone_input_international/attach_test.js"></script>
+<script type="module" class="mocha-exec">
     mocha.run();
+    console.log("MOCHA FINISH")
 </script>

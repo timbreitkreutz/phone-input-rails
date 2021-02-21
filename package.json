@@ -6,6 +6,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
+    "countries-list": "^2.6.1",
     "jslint-lite": "^2020.10.27",
     "libphonenumber-js": "^1.9.11",
     "turbolinks": "^5.2.0"

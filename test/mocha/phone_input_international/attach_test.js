@@ -6,41 +6,40 @@
    it
  */
 
-import("/javascripts/phone_input_international/attach.js").then(
-    function (pii) {
-        describe("version", function () {
-            it("should be 0.0.1", function () {
-                expect(pii.version).to.equal("0.0.1");
-            });
-        });
-        describe("onChange", function () {
-            it("should receive correct change callback params", function () {
-                const options = {
-                    scope: document,
-                    normalizeOnChange: "squash"
-                };
+import {attach, version} from "/javascripts/phone_input_international/attach.js";
 
-                let fired = false;
-                const handle = pii.attach("#input2", options)[0];
-                const input = document.getElementById("input2");
+// console.log("ATTACH TEST");
 
-                const callback = function (event, handle) {
-                    expect(event.type).to.equal("change");
+// import("/javascripts/phone_input_international/attach.js").then(
+//     // function (pii) {
+//         console.log("ATTACH TEST B")
+//         // console.log(pii)
+//         describe("version", function () {
+//             it("should be 0.0.1", function () {
+//                 console.log("in test")
+//                 console.log(attach);
+//                 // expect(attach.version).to.equal("0.0.1");
+//                 expect(1).to_equal(1.1);
+//             });
+//         });
+//     // }
+// );
 
-                    expect(handle.isValid()).to.equal(true);
-                    expect(handle.normalized()).to.equal("5552738535");
-                    fired = true;
-                };
-                handle.onChange(callback);
 
-                expect(fired).to.equal(false);
+describe('version', function () {
+    it('should correct version', function () {
+        chai.expect(version).to.equal("0.0.1");
+    });
+});
 
-                input.dispatchEvent(new Event("change"));
 
-                expect(fired).to.equal(true);
-
-                expect(input.placeholder).to.equal("(rrr) nnn-nnnn");
-            });
-        });
-    }
-);
+describe('attach', function () {
+    it('create a single handle', function () {
+        const input = document.getElementById("#input2");
+        let handles1 = attach("#input2", {});
+        chai.expect(handles1.length).to.equal(1);
+        let handles2 = attach("#input2", {});
+        chai.expect(handles2.length).to.equal(1);
+        chai.expect(handles1[0].element).to.equal(handles2[0].element);
+    });
+});

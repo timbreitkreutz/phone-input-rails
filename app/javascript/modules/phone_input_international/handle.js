@@ -2,7 +2,7 @@
  browser
 */
 import {normalizeNumber, validateNumber}
-    from "./numbers.js";
+    from "./data.js";
 
 function makeHandle(element) {
     let handle;

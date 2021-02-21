@@ -29,18 +29,18 @@
 import("/javascripts/phone_input_international/attach.js").then(
     function (pii) {
         const options = {
-          normalizeOnChange: "squash",
+          normalizer: "squash",
           countryPicker: "my-country-picker"
         }
         let handle = pii.attach("#person_home_phone", options)[0];
 
-        handle.onChange(function (event, id, element, valid, normalized) {
+        handle.onChange(function (event, handle) {
             console.log("PII Event starting");
             console.log(event);
-            console.log(id);
-            console.log(element);
-            console.log(valid);
-            console.log(normalized);
+            console.log(handle);
+            console.log(handle.element);
+            console.log(handle.isValid());
+            console.log(handle.normalized());
             console.log("PII Event complete");
         });
     }

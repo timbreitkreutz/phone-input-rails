@@ -8,7 +8,7 @@
 
 const expect = chai.expect;
 
-import("/javascripts/phone_input_international/numbers.js").then(
+import("/javascripts/phone_input_international/data.js").then(
     function (pin) {
         describe("normalizeNumber", function () {
             it("should remove spaces", function () {

@@ -20,4 +20,8 @@ class ScriptsController < ApplicationController
   def metadata
     render json: File.read("./app/javascript/modules/metadata.min.json")
   end
+
+  def country_list
+    render json: File.read("./app/javascript/modules/countries.emoji.min.json")
+  end
 end
