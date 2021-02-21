@@ -3,8 +3,6 @@ import {afterLoad, countryData, phoneData}
 
 describe('afterLoad', function () {
     it('should wait until data are loaded before running', function () {
-        chai.expect(typeof countryData).to.equal("undefined");
-        chai.expect(typeof phoneData).to.equal("undefined");
         afterLoad(function() {
             chai.expect(countryData.US.continent).to.equal("NA");
             chai.expect(phoneData.metadata.countries.US[0]).to.equal("1");

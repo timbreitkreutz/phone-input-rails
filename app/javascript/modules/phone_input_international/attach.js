@@ -8,20 +8,11 @@ import {countryPicker} from "./countryPicker.js";
 import {normalizer} from "./normalizer.js";
 import {placeholder} from "./placeholder.js";
 
-// Only load an element once :)
-let initialized = [];
-
 function initialize(options, handles) {
     handles.forEach(function (handle) {
-        if (initialized[handle.element]) {
-            return;
-        }
-
         countryPicker(handle, options);
         normalizer(handle, options);
         placeholder(handle, options);
-
-        initialized[handle.element] = true;
     });
 
     if (options.afterInitialize) {
